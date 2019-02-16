@@ -22,9 +22,9 @@ def get_filters():
     city = ""
     valid_city = False
     while not valid_city:
-        city = input ("Please specify either Chicago, New York City or Washington:\n").title()
+        city = input("Please specify either Chicago, New York City or Washington:\n").title()
         if city not in ("Chicago","New York City","Washington"):
-            print ("You did not enter a valid city.")
+            print("You did not enter a valid city.")
         else:
             valid_city = True
 
@@ -32,7 +32,7 @@ def get_filters():
     month = ""
     valid_month = False
     while not valid_month:
-        month = input ("Please specify a month between January and June, or 'All' to see data for all 6 months:\n").title()
+        month = input("Please specify a month between January and June, or 'All' to see data for all 6 months:\n").title()
         if month not in ("All","January","February","March","April","May","June"):
             print ("You did not enter a valid month.")
         else:
@@ -42,9 +42,9 @@ def get_filters():
     day = ""
     valid_day = False
     while not valid_day:
-        day = input ("Please specify a day of the week between Sunday and Saturday, or 'All' to see data for all days:\n").title()
+        day = input("Please specify a day of the week between Sunday and Saturday, or 'All' to see data for all days:\n").title()
         if day not in ("All","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"):
-            print ("You did not enter a valid day.")
+            print("You did not enter a valid day.")
         else:
             valid_day = True
 
@@ -119,14 +119,14 @@ def station_stats(df):
     start_time = time.time()
 
     # display most commonly used start station
-    print ("Most commonly used start station: ", df['Start Station'].mode().to_string(index = False))
+    print("Most commonly used start station: ", df['Start Station'].mode().to_string(index = False))
 
     # display most commonly used end station
-    print ("Most commonly used end station: ", df['End Station'].mode().to_string(index = False))
+    print("Most commonly used end station: ", df['End Station'].mode().to_string(index = False))
 
     # display most frequent combination of start station and end station trip
     start_end = df["Start Station"].combine(df["End Station"], lambda s1, s2: "START = " + s1 + ", END = " + s2)
-    print ("Most frequent combination of start station and end station trip: ",start_end.mode().to_string(index = False))
+    print("Most frequent combination of start station and end station trip: ",start_end.mode().to_string(index = False))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -140,11 +140,11 @@ def trip_duration_stats(df):
 
     # display total travel time
     total_hours = df['Trip Duration'].sum() / 360
-    print ("Total travel time: " + str(round(total_hours, 1)) + " hours")
+    print("Total travel time: " + str(round(total_hours, 1)) + " hours")
 
     # display mean travel time
     mean_minutes = df['Trip Duration'].mean() / 60
-    print ("Mean travel time: " + str(round(mean_minutes, 1)) + " minutes")
+    print("Mean travel time: " + str(round(mean_minutes, 1)) + " minutes")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -157,25 +157,25 @@ def user_stats(df,city):
     start_time = time.time()
 
     # Display counts of user types
-    print ("Counts of user types:")
-    print ("=====================")
-    print (df.groupby(["User Type"])["User Type"].count().to_string())
+    print("Counts of user types:")
+    print("=====================")
+    print(df.groupby(["User Type"])["User Type"].count().to_string())
 
     # Display counts of gender
     if city != "Washington":
-        print ("\nCounts of gender:")
-        print ("===================")
-        print (df.groupby(["Gender"])["Gender"].count().to_string())
+        print("\nCounts of gender:")
+        print("===================")
+        print(df.groupby(["Gender"])["Gender"].count().to_string())
     else:
-        print ("\nGender counts are not available for this city.")
+        print("\nGender counts are not available for this city.")
 
     # Display earliest, most recent, and most common year of birth
     if city != "Washington":
-        print ("\nEarliest year of birth: ", int(df['Birth Year'].min()))
-        print ("Most recent year of birth: ", int(df['Birth Year'].max()))
-        print ("Most common year of birth: ", df['Birth Year'].mode().to_string(index = False, float_format = "%4.0f"))
+        print("\nEarliest year of birth: ", int(df['Birth Year'].min()))
+        print("Most recent year of birth: ", int(df['Birth Year'].max()))
+        print("Most common year of birth: ", df['Birth Year'].mode().to_string(index = False, float_format = "%4.0f"))
     else:
-        print ("Year of birth data are not available for this city.")
+        print("Year of birth data are not available for this city.")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -198,11 +198,11 @@ def main():
                 if counter < 5:
                     result = original.iloc[[row]].to_dict("records")
                     for key, value in result[0].items():
-                        print (str(key) + ":" + str(value))
-                    print ()
+                        print(str(key) + ":" + str(value))
+                    print()
                     counter += 1
                 else:
-                    cont = input ("\nWould you like to see further raw data? Enter Yes or No.\n")
+                    cont = input("\nWould you like to see further raw data? Enter Yes or No.\n")
                     if cont.title() != "Yes":
                         break
                     counter = 0
