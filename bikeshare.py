@@ -17,6 +17,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = ""
     valid_city = False
@@ -190,8 +191,8 @@ def main():
         trip_duration_stats(df)
         user_stats(df,city)
 
-        rawdata = input("\nWould you like to see the raw data? Enter Yes or No.\n")
-        if rawdata.title() == "Yes":
+        rawData = input("\nWould you like to see the raw data? Enter Yes or No.\n")
+        if rawData.title() == "Yes":
             counter = 0
             for row in range(original.shape[0]):
                 if counter < 5:
