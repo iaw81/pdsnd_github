@@ -12,9 +12,23 @@ Data for the cities of Chicago, New York City, and Washington DC is available an
 Statistical data on the following topics is generated for the user to review:
 
 1. Popular times of travel
+* most common month
+* most common day of week
+* most common hour of day
+
 2. Popular stations and trip
+* most common start station
+* most common end station
+* most common trip from start to end
+
 3. Trip duration
+* total travel time
+* average travel time
+
 4. User info
+* counts of each user type
+* counts of each gender [^1]
+* earliest, most recent, most common year of birth [^1]
 
 ### **Files used**
 ##### Program files:
@@ -28,3 +42,4 @@ Statistical data on the following topics is generated for the user to review:
 ### **Credits**
 Udacity (www.udacity.com)
 
+[^1]: Only available for New York City and Chicago
