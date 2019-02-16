@@ -48,7 +48,7 @@ def get_filters():
         else:
             valid_day = True
 
-    print('-'*40)
+    print('-' * 40)
     return city, month, day
 
 
@@ -109,7 +109,7 @@ def time_stats(df):
     print("Most common start hour: ", df['Hour'].mode().to_string(index = False))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-' * 40)
 
 
 def station_stats(df):
@@ -129,7 +129,7 @@ def station_stats(df):
     print("Most frequent combination of start station and end station trip: ",start_end.mode().to_string(index = False))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-' * 40)
 
 
 def trip_duration_stats(df):
@@ -147,10 +147,10 @@ def trip_duration_stats(df):
     print("Mean travel time: " + str(round(mean_minutes, 1)) + " minutes")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-' * 40)
 
 
-def user_stats(df,city):
+def user_stats(df, city):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
@@ -178,7 +178,7 @@ def user_stats(df,city):
         print("Year of birth data are not available for this city.")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print('-' * 40)
 
 def main():
     while True:
@@ -189,7 +189,7 @@ def main():
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
-        user_stats(df,city)
+        user_stats(df, city)
 
         rawData = input("\nWould you like to see the raw data? Enter Yes or No.\n")
         if rawData.title() == "Yes":
